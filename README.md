@@ -1,6 +1,4 @@
 # LocalRoots-Marketplace
-
-# LocalRoots – Sustainable Farmers Marketplace
 LocalRoots is a multi-vendor online marketplace that connects local farmers directly with customers.  
 The platform promotes sustainability, transparency, and convenience through vendor portals, customer dashboards, and an admin panel.
 
