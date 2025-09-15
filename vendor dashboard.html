@@ -4,7 +4,161 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Localroots Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css"/>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background-color: #eae3e3;
+      width: 200px;
+      padding: 20px;
+    }
+
+    .sidebar h1 {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 40px;
+    }
+
+    .nav-links a {
+      display: block;
+      color: black;
+      text-decoration: none;
+      margin: 20px 0;
+      font-weight: 500;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      background-color: #d6d6d6;
+      padding: 20px 40px;
+      position: relative;
+    }
+
+    .header {
+      text-align: right;
+      margin-bottom: 30px;
+    }
+
+    .logout {
+      color: black;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .manage-product h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .product-grid {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .product-placeholder {
+      width: 120px;
+      height: 100px;
+      background-color: white;
+      border: 1px solid #000;
+      background-image: linear-gradient(45deg, transparent 49%, black 49%, black 51%, transparent 51%),
+                        linear-gradient(-45deg, transparent 49%, black 49%, black 51%, transparent 51%);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+
+    .add-product-btn {
+      background-color: red;
+      color: black;
+      font-weight: bold;
+      padding: 6px 12px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .recent-order {
+      margin-top: 30px;
+    }
+
+    .recent-order h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #f3f3f3;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #aaa;
+      text-align: left;
+    }
+
+    th {
+      background-color: #bdb3b3;
+    }
+
+    .status-completed {
+      color: green;
+      font-weight: bold;
+    }
+
+    table input[type="text"],
+    table input[type="date"] {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: #fff;
+    }
+
+    .product-card {
+      width: 120px;
+      background-color: white;
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 4px 0;
+    }
+
+    .product-price {
+      font-size: 12px;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -26,25 +180,23 @@
       <section class="manage-product">
         <h2>Manage Product</h2>
         <div class="product-grid">
-  <div class="product-card">
-    <img src="\Users\khatr\Downloads\Localroots\images\tomatoes.jpg" alt="Box of Tomatoes">
-    <p class="product-name">Box of Tomatoes</p>
-    <p class="product-price">$28.00</p>
-  </div>
+          <div class="product-card">
+            <img src="\Users\khatr\Downloads\Localroots\images\tomatoes.jpg" alt="Box of Tomatoes">
+            <p class="product-name">Box of Tomatoes</p>
+            <p class="product-price">$28.00</p>
+          </div>
 
-  <div class="product-card">
-    <img src="\Users\khatr\Downloads\Localroots\images\box-of-lettuce.png" alt="Fresh Lettuces">
-    <p class="product-name">Fresh Lettuces</p>
-    <p class="product-price">$30.00</p>
-  </div>
-  
+          <div class="product-card">
+            <img src="\Users\khatr\Downloads\Localroots\images\box-of-lettuce.png" alt="Fresh Lettuces">
+            <p class="product-name">Fresh Lettuces</p>
+            <p class="product-price">$30.00</p>
+          </div>
 
-  <div class="product-card">
-    <img src="\Users\khatr\Downloads\Localroots\images\box-of-zucchini.png" alt="box-of-zucchini.PNG">
-    <p class="product-name">5KG of Zucchini</p>
-    <p class="product-price">$33.00</p>
-  </div>
-
+          <div class="product-card">
+            <img src="\Users\khatr\Downloads\Localroots\images\box-of-zucchini.png" alt="box-of-zucchini.PNG">
+            <p class="product-name">5KG of Zucchini</p>
+            <p class="product-price">$33.00</p>
+          </div>
         </div>
         <button class="add-product-btn">Add Product</button>
       </section>
@@ -60,16 +212,16 @@
             </tr>
           </thead>
           <tbody>
-             <tr>
-        <td><input type="text" placeholder="Order #" /></td>
-        <td><input type="date" /></td>
-        <td><input type="text" placeholder="Status" /></td>
-      </tr>
-      <tr>
-        <td><input type="text" placeholder="Order #" /></td>
-        <td><input type="date" /></td>
-        <td><input type="text" value="Completed" /></td>
-      </tr>
+            <tr>
+              <td><input type="text" placeholder="Order #" /></td>
+              <td><input type="date" /></td>
+              <td><input type="text" placeholder="Status" /></td>
+            </tr>
+            <tr>
+              <td><input type="text" placeholder="Order #" /></td>
+              <td><input type="date" /></td>
+              <td><input type="text" value="Completed" /></td>
+            </tr>
           </tbody>
         </table>
       </section>
