@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Localroots Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css"/>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h1>LOCALROOTS</h1>
+      <nav class="nav-links">
+        <a href="#">PRODUCT</a>
+        <a href="#">ORDERS</a>
+        <a href="#">SALES</a>
+        <a href="#">PROFILE</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+        <a href="#" class="logout">Log out</a>
+      </header>
+
+      <section class="manage-product">
+        <h2>Manage Product</h2>
+        <div class="product-grid">
+  <div class="product-card">
+    <img src="\Users\khatr\Downloads\Localroots\images\tomatoes.jpg" alt="Box of Tomatoes">
+    <p class="product-name">Box of Tomatoes</p>
+    <p class="product-price">$28.00</p>
+  </div>
+
+  <div class="product-card">
+    <img src="\Users\khatr\Downloads\Localroots\images\box-of-lettuce.png" alt="Fresh Lettuces">
+    <p class="product-name">Fresh Lettuces</p>
+    <p class="product-price">$30.00</p>
+  </div>
+  
+
+  <div class="product-card">
+    <img src="\Users\khatr\Downloads\Localroots\images\box-of-zucchini.png" alt="box-of-zucchini.PNG">
+    <p class="product-name">5KG of Zucchini</p>
+    <p class="product-price">$33.00</p>
+  </div>
+
+        </div>
+        <button class="add-product-btn">Add Product</button>
+      </section>
+
+      <section class="recent-order">
+        <h2>Recent Order</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr>
+        <td><input type="text" placeholder="Order #" /></td>
+        <td><input type="date" /></td>
+        <td><input type="text" placeholder="Status" /></td>
+      </tr>
+      <tr>
+        <td><input type="text" placeholder="Order #" /></td>
+        <td><input type="date" /></td>
+        <td><input type="text" value="Completed" /></td>
+      </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
