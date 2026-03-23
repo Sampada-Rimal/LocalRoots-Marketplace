@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LocalRoots – Dashboard</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="./localroots logo.png" alt="LocalRoots logo">
+        <div>
+          <div class="brand-title">LocalRoots</div>
+          <div class="brand-sub">Sustainable Farmers Marketplace</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a class="active" href="./dashboard.html"><span class="ico">🏠</span>Dashboard</a>
+                <a href="./shop.html"><span class="ico">🏬</span>Shop</a>
+        <a href="./Order history.html"><span class="ico">🧾</span>Order history</a>
+        <a href="./Set preferences.html"><span class="ico">⚙️</span>Set preference</a>
+        <a href="./Track Deliveries.html"><span class="ico">🚚</span>Track Deliveries</a>
+        <a href="./cart.html"><span class="ico">🛒</span>Cart</a>
+        <a href="./customer login.html"><span class="ico">↩︎</span>Log out</a>
+      </nav>
+    </aside>
+
+    <div>
+      <header class="topbar">
+        <div class="search">
+          <span>🔎</span>
+          <input type="search" placeholder="Search products or past orders…" />
+        </div>
+        <div class="row">
+          <a class="cart-btn" href="./cart.html">🛒 Cart <span class="cart-count">0</span></a>
+        </div>
+      </header>
+
+      <main class="main">
+        <h1 class="h1">Welcome back 👋</h1>
+<!-- Featured Partners (Dashboard snippet) -->
+<section class="partners-head">
+  <div class="row" style="justify-content:space-between; align-items:center">
+    <h2 class="h2">Featured Partners</h2>
+    <a class="small" href="./shop.html">Or Shop by Item →</a>
+  </div>
+
+  <div class="grid partners-grid mt">
+    <!-- Tile 1 -->
+    <a class="tile" href="./vendor-detail.html">
+      <div class="tile-img" style="background-image:url('image/farm1.jpg')"></div>
+      <div class="tile-caption">Diddly Farm</div>
+    </a>
+
+    <!-- Tile 2 -->
+    <a class="tile" href="./vendor-tony-farm.html">
+      <div class="tile-img" style="background-image:url('image/farm2.jpg')"></div>
+      <div class="tile-caption">Tony's Family Farm</div>
+    </a>
+
+    <!-- Tile 3 -->
+    <a class="tile" href="./vendor-farmers-market.html">
+      <div class="tile-img" style="background-image:url('image/farm3.jpg')"></div>
+      <div class="tile-caption">Farmer's Market</div>
+    </a>
+
+    <!-- Tile 4 -->
+    <a class="tile" href="./vendor-dinas-garden.html">
+      <div class="tile-img" style="background-image:url('image/farm4.jpg')"></div>
+      <div class="tile-caption">Dina's Garden</div>
+    </a>
+  </div>
+</section>
+        <div class="space"></div>
+
+        <section class="card">
+          <div class="row" style="justify-content:space-between; align-items:center">
+            <strong>Seasonal Recommendations</strong>
+          </div>
+
+          <div class="row mt" style="flex-wrap:wrap">
+            <!-- Product 1 -->
+            <div class="card" style="width:240px">
+              <img src="image/tomatos.png" style="width:100%; height:140px; object-fit:cover; border-radius:10px" alt="">
+              <div class="row" style="justify-content:space-between; margin-top:8px">
+                <strong>Tomatoes</strong><span class="price">$4.99</span>
+              </div>
+              <button class="btn btn-primary mt" style="width:100%"
+                onclick="Cart.addItem({id:'tomatoes-001', name:'Heirloom Tomatoes', price:4.99, image:'./assets/tomatoes.jpg'})">
+                Add to cart
+              </button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="card" style="width:240px">
+              <img src="image/kale.png" style="width:100%; height:140px; object-fit:cover; border-radius:10px" alt="">
+              <div class="row" style="justify-content:space-between; margin-top:8px">
+                <strong>Fresh Kale</strong><span class="price">$3.50</span>
+              </div>
+              <button class="btn btn-primary mt" style="width:100%"
+                onclick="Cart.addItem({id:'kale-001', name:'Fresh Kale', price:3.50, image:'./assets/kale.jpg'})">
+                Add to cart
+              </button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="card" style="width:240px">
+              <img src="image/honey.png" style="width:100%; height:140px; object-fit:cover; border-radius:10px" alt="">
+              <div class="row" style="justify-content:space-between; margin-top:8px">
+                <strong>Raw Honey (8oz)</strong><span class="price">$8.00</span>
+              </div>
+              <button class="btn btn-primary mt" style="width:100%"
+                onclick="Cart.addItem({id:'honey-8oz-001', name:'Raw Honey (8oz)', price:8.00, image:'./assets/honey.jpg'})">
+                Add to cart
+              </button>
+            </div>
+ 
+<!-- Product 4 -->
+<div class="card" style="width:240px">
+  <img src="image/Sourdough Bread.png" style="width:100%; height:140px; object-fit:cover; border-radius:10px" alt="Sourdough Loaf">
+  <div class="row" style="justify-content:space-between; margin-top:8px">
+    <strong>Sourdough Loaf</strong><span class="price">$5.50</span>
+  </div>
+  <button class="btn btn-primary mt" style="width:100%"
+    onclick="Cart.addItem({id:'sourdough-loaf', name:'Sourdough Loaf', price:5.50, image:'./assets/sourdough.jpg'})">
+    Add to cart
+  </button>
+</div>
+ 
+<!-- Product 5 -->
+<div class="card" style="width:240px">
+  <img src="image/Free-Range Eggs.png" style="width:100%; height:140px; object-fit:cover; border-radius:10px" alt="Free-range Eggs (Dozen)">
+  <div class="row" style="justify-content:space-between; margin-top:8px">
+    <strong>Free-range Eggs</strong><span class="price">$6.99</span>
+  </div>
+  <button class="btn btn-primary mt" style="width:100%"
+    onclick="Cart.addItem({id:'eggs-free-range-12', name:'Free-range Eggs', price:6.99, image:'./assets/eggs.jpg'})">
+    Add to cart
+  </button>
+</div>
+          </div>
+        </section>
+
+        <div class="space"></div>
+
+        <section class="card">
+          <div class="row" style="justify-content:space-between">
+            <strong>Recent Orders</strong>
+            <a href="./Order history.html" class="small">View all →</a>
+          </div>
+          <table class="table mt">
+            <thead><tr><th>#</th><th>Date</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>#4321</td><td>Oct 18, 2024</td><td>$42.60</td><td><span class="status info">Out for Delivery</span></td></tr>
+              <tr><td>#4310</td><td>Oct 10, 2024</td><td>$29.40</td><td><span class="status ok">Delivered</span></td></tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="./cart.js"></script>
+<footer class="hero-footer">
+<div class="hero-footer-container">
+<!-- Left side: Image -->
+<div class="footer-image">
+<img src="image/footerimg.jpg" alt="Fresh farm produce">
+</div>
+ 
+    <!-- Right side: Text and button -->
+<div class="footer-content">
+<h2>From farm directly to your house.</h2>
+<p>Bringing you fresh, local produce straight from our partner farmers to your doorstep.</p>
+<a href="./shop.html" class="footer-btn">Shop Now</a>
+</div>
+</div>
+ 
+  <div class="footer-bottom">
+<div class="footer-links">
+<a href="./dashboard.html">Dashboard</a>
+<a href="./shop.html">Shop</a>
+<a href="./vendors.html">Vendors</a>
+<a href="./Order history.html">Orders</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms</a>
+</div>
+<p>© 2025 LocalRoots. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>
