@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LocalRoots – Farmer's Market</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="./localroots logo.png" alt="LocalRoots logo">
+        <div>
+          <div class="brand-title">LocalRoots</div>
+          <div class="brand-sub">Sustainable Farmers Marketplace</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="./dashboard.html"><span class="ico">🏠</span>Dashboard</a>
+                        <a href="./shop.html"><span class="ico">🏬</span>Shop</a>
+
+        <a href="./Order history.html"><span class="ico">🧾</span>Order history</a>
+        <a href="./Set preferences.html"><span class="ico">⚙️</span>Set preference</a>
+        <a href="./Track Deliveries.html"><span class="ico">🚚</span>Track Deliveries</a>
+        <a href="./cart.html"><span class="ico">🛒</span>Cart</a>
+        <a href="./customer login.html"><span class="ico">↩︎</span>Log out</a>
+      </nav>
+    </aside>
+
+    <div>
+      <header class="topbar">
+        <div class="badge">Vendor profile</div>
+        <a class="cart-btn" href="./cart.html">🛒 Cart <span class="cart-count" id="cartCount">0</span></a>
+      </header>
+
+      <main class="main">
+        <!-- BIO -->
+        <article class="card bio-hero">
+          <div class="bio-copy">
+            <h1 class="h1">Farmer's Market</h1>
+            <p class="muted lead">
+              A cooperative bringing together small growers from across the region.
+            </p>
+
+            <div class="prose">
+              <p>
+                The co-op model means better prices for growers and more variety for you. Each season brings a different
+                lineup of producers and specialties.
+              </p>
+              <p>
+                Discover rotating stalls: stone fruit in summer, brassicas in winter, and artisanal dairy year-round.
+                Expect short supply chains and transparent sourcing.
+              </p>
+            </div>
+
+            <p class="strong mt">12 Market Street, VIC</p>
+
+            <div class="row mt">
+              <a class="btn btn-ghost" href="./dashboard.html">Back to dashboard</a>
+            </div>
+          </div>
+
+          <div class="bio-photo">
+            <img src="image/farm3.jpg" alt="Farmer's Market building">
+          </div>
+        </article>
+
+        <!-- PRODUCT GRID -->
+        <div class="space"></div>
+        <section>
+          <div class="row" style="justify-content:space-between; align-items:center">
+            <h2 class="h2">Farmer's Market – Items</h2>
+            <div class="row">
+              <label for="sortSelect" class="muted">Sort by</label>
+              <select id="sortSelect" class="input" style="padding:8px 10px">
+                <option value="best">Best selling</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A → Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="muted small mt" id="resultsMeta">0 products</div>
+          <section id="grid" class="product-grid mt"></section>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="./cart.js"></script>
+  <script>
+    const $ = s => document.querySelector(s);
+    const money = n => `$${n.toFixed(2)}`;
+
+    // 🧺 Farmer's Market — 4 items
+    const PRODUCTS = [
+      { id:'fm-apple', name:'Pink Lady Apples', unit:'Each', price:1.88, image:'image/pink lady apple.jpg', vendor:"Farmer's Market" },
+      { id:'fm-orange', name:'Navel Oranges', unit:'Each', price:1.39, image:'image/Navel Oranges.png', vendor:"Farmer's Market" },
+      { id:'fm-eggs', name:'Free Range Eggs', unit:'Dozen', price:6.99, image:'image/Free-Range Eggs.png', vendor:"Farmer's Market" },
+      { id:'fm-sourdough', name:'Sourdough Loaf', unit:'800 g', price:5.50, image:'image/Sourdough Bread.png', vendor:"Farmer's Market" }
+    ];
+
+    const state = { sort:'best' };
+    const grid = $('#grid');
+    const resultsMeta = $('#resultsMeta');
+    const cartCount = $('#cartCount');
+
+    function sortList(list){
+      const out = [...list];
+      switch(state.sort){
+        case 'price-asc': out.sort((a,b)=>a.price-b.price); break;
+        case 'price-desc': out.sort((a,b)=>b.price-a.price); break;
+        case 'name-asc': out.sort((a,b)=>a.name.localeCompare(b.name)); break;
+      }
+      return out;
+    }
+
+    function renderProducts(list){
+      grid.innerHTML = '';
+      list.forEach(p=>{
+        const el = document.createElement('div');
+        el.className = 'card p-card';
+        el.innerHTML = `
+          <div class="p-img"><img src="${p.image}" alt="${p.name}"></div>
+          <div class="p-body">
+            <div class="row" style="justify-content:space-between">
+              <strong>${p.name}</strong>
+              <span class="price">${money(p.price)}</span>
+            </div>
+            <div class="muted small">${p.unit} • ${p.vendor}</div>
+            <div class="row mt qty">
+              <button class="qty-btn" data-act="dec">−</button>
+              <input class="qty-input" value="0" readonly>
+              <button class="qty-btn" data-act="inc">+</button>
+            </div>
+            <button class="btn btn-primary mt w-100">Add to cart</button>
+          </div>
+        `;
+
+        const qtyInput = el.querySelector('.qty-input');
+        el.querySelectorAll('.qty-btn').forEach(b=>{
+          b.onclick = () => {
+            let v = parseInt(qtyInput.value||'0',10);
+            v = (b.dataset.act==='inc') ? v+1 : Math.max(0, v-1);
+            qtyInput.value = v;
+          };
+        });
+
+        el.querySelector('.btn-primary').onclick = ()=>{
+          const qty = parseInt(qtyInput.value||'0',10) || 1;
+          if (window.Cart && typeof window.Cart.addItem === 'function') {
+            window.Cart.addItem({ id:p.id, name:p.name, price:p.price, image:p.image, qty });
+            if (typeof window.Cart.count === 'function') cartCount.textContent = window.Cart.count();
+          }
+          qtyInput.value = 0;
+        };
+
+        grid.appendChild(el);
+      });
+    }
+
+    function render(){
+      const list = sortList(PRODUCTS);
+      renderProducts(list);
+      resultsMeta.textContent = `${list.length} product${list.length!==1?'s':''}`;
+    }
+
+    $('#sortSelect').addEventListener('change', e => { state.sort = e.target.value; render(); });
+    render();
+  </script>
+  <footer class="hero-footer">
+<div class="hero-footer-container">
+<!-- Left side: Image -->
+<div class="footer-image">
+<img src="image/footerimg.jpg" alt="Fresh farm produce">
+</div>
+ 
+    <!-- Right side: Text and button -->
+<div class="footer-content">
+<h2>From farm directly to your house.</h2>
+<p>Bringing you fresh, local produce straight from our partner farmers to your doorstep.</p>
+<a href="./shop.html" class="footer-btn">Shop Now</a>
+</div>
+</div>
+ 
+  <div class="footer-bottom">
+<div class="footer-links">
+<a href="./dashboard.html">Dashboard</a>
+<a href="./shop.html">Shop</a>
+<a href="./vendors.html">Vendors</a>
+<a href="./Order history.html">Orders</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms</a>
+</div>
+<p>© 2025 LocalRoots. All rights reserved.</p>
+</div>
+</footer>
+</body>
+</html>
