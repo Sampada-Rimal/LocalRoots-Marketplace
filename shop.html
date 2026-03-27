@@ -8,7 +8,6 @@
 </head>
 <body>
   <div class="app">
-    <!-- Sidebar (kept like dashboard, but no Category in the page) -->
     <aside class="sidebar">
       <div class="brand">
         <img src="./localroots logo.png" alt="LocalRoots logo">
@@ -43,7 +42,6 @@
       <main class="main">
         <h1 class="h1">Shop</h1>
  
-        <!-- Sort row (optional) -->
         <div class="row mb" style="justify-content:space-between">
           <div class="muted" id="resultsMeta">0 products</div>
           <div class="row">
@@ -59,7 +57,6 @@
  
         <!-- Product Grid (no sidebar) -->
         <section id="grid" class="product-grid">
-          <!-- cards injected by JS -->
         </section>
       </main>
     </div>
@@ -71,31 +68,80 @@
     // Require login like dashboard
     window.SAuth && window.SAuth.requireAuth && window.SAuth.requireAuth();
  
-    // 🥦 Shop Products evenly split across 4 farms
     const PRODUCTS = [
       // Diddly Farm
       {id:'diddly-tomato', name:'Tomatoes', unit:'500 g', vendor:"Diddly Farm", price:3.20, image:'image/tomatos.png'},
       {id:'diddly-basil', name:'Fresh Basil', unit:'Bunch', vendor:"Diddly Farm", price:2.50, image:'image/Basil.jpg'},
       {id:'diddly-honey', name:'Raw Honey (Jar)', unit:'250 g', vendor:"Diddly Farm", price:9.00, image:'image/raw honey.jpg'},
       {id:'diddly-cucumber', name:'Cucumber', unit:'Each', vendor:"Diddly Farm", price:1.80, image:'image/cucumbes.jpg'},
+      {id:'diddly-strawberries', name:'Strawberries', unit:'250 g', vendor:"Diddly Farm", price:4.80, image:'image/strawberries.jpg'},
+      {id:'diddly-blueberries', name:'Blueberries', unit:'125 g', vendor:"Diddly Farm", price:5.20, image:'image/blueberries.jpg'},
+      {id:'diddly-spinach', name:'Baby Spinach', unit:'Bag', vendor:"Diddly Farm", price:3.40, image:'image/baby spinach.jpg'},
+      {id:'diddly-kale', name:'Kale', unit:'Bunch', vendor:"Diddly Farm", price:3.00, image:'image/kale.jpg'},
+      {id:'diddly-pumpkin', name:'Jap Pumpkin', unit:'Each', vendor:"Diddly Farm", price:6.90, image:'image/jap pumpkin.jpg'},
+      {id:'diddly-potatoes', name:'Potatoes', unit:'2 kg', vendor:"Diddly Farm", price:5.50, image:'image/potatoes.jpg'},
+      {id:'diddly-onions', name:'Brown Onions', unit:'1 kg', vendor:"Diddly Farm", price:2.80, image:'image/brown onions.jpg'},
+      {id:'diddly-garlic', name:'Garlic Bulbs', unit:'3 Pack', vendor:"Diddly Farm", price:2.90, image:'image/garlic bulbs.jpg'},
+      {id:'diddly-capsicum-red', name:'Red Capsicum', unit:'Each', vendor:"Diddly Farm", price:2.20, image:'image/red capsicum.jpg'},
+      {id:'diddly-broccoli', name:'Broccoli', unit:'Head', vendor:"Diddly Farm", price:2.70, image:'image/broccoli.jpg'},
+      {id:'diddly-beetroot', name:'Beetroot', unit:'500 g', vendor:"Diddly Farm", price:3.30, image:'image/beetroot.jpg'},
+      {id:'diddly-celery', name:'Celery', unit:'Each', vendor:"Diddly Farm", price:3.60, image:'image/celery.jpg'},
+      {id:'diddly-greenbeans', name:'Green Beans', unit:'300 g', vendor:"Diddly Farm", price:4.10, image:'image/green beans.jpg'}
 
       // Tony's Family Farm
       {id:'tony-carrots', name:'Carrots', unit:'1 kg', vendor:"Tony's Family Farm", price:2.99, image:'image/carrots.jpg'},
       {id:'tony-lettuce', name:'Mixed Lettuce', unit:'Bag', vendor:"Tony's Family Farm", price:3.10, image:'image/mixed lettuce.jpg'},
       {id:'tony-lemon', name:'Lemon', unit:'Each', vendor:"Tony's Family Farm", price:0.90, image:'image/lemons.jpg'},
       {id:'tony-zucchini', name:'Zucchini', unit:'Each', vendor:"Tony's Family Farm", price:1.50, image:'image/zucchini.jpg'},
+      {id:'tony-pears', name:'Packham Pears', unit:'Each', vendor:"Tony's Family Farm", price:1.70, image:'image/packham pears.jpg'},
+      {id:'tony-bananas', name:'Bananas', unit:'1 kg', vendor:"Tony's Family Farm", price:3.90, image:'image/bananas.jpg'},
+      {id:'tony-mandarins', name:'Mandarins', unit:'1 kg', vendor:"Tony's Family Farm", price:4.50, image:'image/mandarins.jpg'},
+      {id:'tony-avocados', name:'Avocados', unit:'Each', vendor:"Tony's Family Farm", price:2.80, image:'image/avocados.jpg'},
+      {id:'tony-sweetcorn', name:'Sweet Corn', unit:'Each', vendor:"Tony's Family Farm", price:1.60, image:'image/sweet corn.jpg'},
+      {id:'tony-cauliflower', name:'Cauliflower', unit:'Each', vendor:"Tony's Family Farm", price:4.20, image:'image/cauliflower.jpg'},
+      {id:'tony-cabbage', name:'Green Cabbage', unit:'Each', vendor:"Tony's Family Farm", price:3.50, image:'image/green cabbage.jpg'},
+      {id:'tony-silverbeet', name:'Silverbeet', unit:'Bunch', vendor:"Tony's Family Farm", price:3.20, image:'image/silverbeet.jpg'},
+      {id:'tony-radish', name:'Radish Bunch', unit:'Bunch', vendor:"Tony's Family Farm", price:2.40, image:'image/radish bunch.jpg'},
+      {id:'tony-springonion', name:'Spring Onions', unit:'Bunch', vendor:"Tony's Family Farm", price:2.10, image:'image/spring onions.jpg'},
+      {id:'tony-parsley', name:'Flat Leaf Parsley', unit:'Bunch', vendor:"Tony's Family Farm", price:2.30, image:'image/flat leaf parsley.jpg'},
+      {id:'tony-rosemary', name:'Rosemary', unit:'Bunch', vendor:"Tony's Family Farm", price:2.60, image:'image/rosemary.jpg'},
+      {id:'tony-thyme', name:'Thyme', unit:'Bunch', vendor:"Tony's Family Farm", price:2.60, image:'image/thyme.jpg'},
 
       // Farmer's Market
       {id:'fm-apple', name:'Pink Lady Apples', unit:'Each', vendor:"Farmer's Market", price:1.88, image:'image/pink lady apple.jpg'},
       {id:'fm-orange', name:'Navel Oranges', unit:'Each', vendor:"Farmer's Market", price:1.39, image:'image/Navel Oranges.png'},
       {id:'fm-eggs', name:'Free Range Eggs', unit:'Dozen', vendor:"Farmer's Market", price:6.99, image:'image/Free-Range Eggs.png'},
       {id:'fm-sourdough', name:'Sourdough Loaf', unit:'800 g', vendor:"Farmer's Market", price:5.50, image:'image/Sourdough Bread.png'},
+      {id:'fm-milk', name:'Fresh Full Cream Milk', unit:'2 L', vendor:"Farmer's Market", price:4.90, image:'image/fresh full cream milk.jpg'},
+      {id:'fm-butter', name:'Salted Butter', unit:'250 g', vendor:"Farmer's Market", price:5.40, image:'image/salted butter.jpg'},
+      {id:'fm-cheddar', name:'Cheddar Cheese', unit:'250 g', vendor:"Farmer's Market", price:6.80, image:'image/cheddar cheese.jpg'},
+      {id:'fm-yoghurt', name:'Greek Yoghurt', unit:'500 g', vendor:"Farmer's Market", price:5.90, image:'image/greek yoghurt.jpg'},
+      {id:'fm-bacon', name:'Free Range Bacon', unit:'250 g', vendor:"Farmer's Market", price:7.90, image:'image/free range bacon.jpg'},
+      {id:'fm-chickeneggs', name:'Organic Eggs', unit:'Dozen', vendor:"Farmer's Market", price:7.50, image:'image/organic eggs.jpg'},
+      {id:'fm-oatbread', name:'Wholemeal Bread Loaf', unit:'700 g', vendor:"Farmer's Market", price:5.20, image:'image/wholemeal bread loaf.jpg'},
+      {id:'fm-muffins', name:'Blueberry Muffins', unit:'4 Pack', vendor:"Farmer's Market", price:6.20, image:'image/blueberry muffins.jpg'},
+      {id:'fm-jam', name:'Strawberry Jam', unit:'Jar', vendor:"Farmer's Market", price:6.50, image:'image/strawberry jam.jpg'},
+      {id:'fm-oliveoil', name:'Extra Virgin Olive Oil', unit:'500 ml', vendor:"Farmer's Market", price:12.90, image:'image/extra virgin olive oil.jpg'},
+      {id:'fm-almonds', name:'Raw Almonds', unit:'300 g', vendor:"Farmer's Market", price:8.70, image:'image/raw almonds.jpg'},
+      {id:'fm-walnuts', name:'Walnuts', unit:'250 g', vendor:"Farmer's Market", price:7.80, image:'image/walnuts.jpg'},
 
       // Dina's Garden
       {id:'dina-herb', name:'Fresh Herb Mix', unit:'Bunch', vendor:"Dina's Garden", price:4.50, image:'image/Fresh herbs mix.png'},
       {id:'dina-flower', name:'Edible Flowers', unit:'Box', vendor:"Dina's Garden", price:6.50, image:'image/edible flowers.jpg'},
       {id:'dina-tea', name:'Herbal Tea Blend', unit:'Pack', vendor:"Dina's Garden", price:8.00, image:'image/herbal tea.png'},
       {id:'dina-honey', name:'Infused Honey', unit:'Jar', vendor:"Dina's Garden", price:11.50, image:'image/honey.png'}
+      {id:'dina-mint', name:'Fresh Mint', unit:'Bunch', vendor:"Dina's Garden", price:2.40, image:'image/fresh mint.jpg'},
+      {id:'dina-coriander', name:'Coriander', unit:'Bunch', vendor:"Dina's Garden", price:2.30, image:'image/coriander.jpg'},
+      {id:'dina-chives', name:'Chives', unit:'Bunch', vendor:"Dina's Garden", price:2.70, image:'image/chives.jpg'},
+      {id:'dina-dill', name:'Dill', unit:'Bunch', vendor:"Dina's Garden", price:2.80, image:'image/dill.jpg'},
+      {id:'dina-sage', name:'Sage', unit:'Bunch', vendor:"Dina's Garden", price:2.90, image:'image/sage.jpg'},
+      {id:'dina-oregano', name:'Oregano', unit:'Bunch', vendor:"Dina's Garden", price:2.70, image:'image/oregano.jpg'},
+      {id:'dina-lavender', name:'Lavender Bunch', unit:'Bunch', vendor:"Dina's Garden", price:5.50, image:'image/lavender bunch.jpg'},
+      {id:'dina-microgreens', name:'Microgreens Mix', unit:'Punnet', vendor:"Dina's Garden", price:4.90, image:'image/microgreens mix.jpg'},
+      {id:'dina-rocket', name:'Rocket Leaves', unit:'Bag', vendor:"Dina's Garden", price:3.60, image:'image/rocket leaves.jpg'},
+      {id:'dina-lemonbalm', name:'Lemon Balm', unit:'Bunch', vendor:"Dina's Garden", price:3.10, image:'image/lemon balm.jpg'},
+      {id:'dina-camomile', name:'Camomile Flowers', unit:'Pack', vendor:"Dina's Garden", price:6.40, image:'image/camomile flowers.jpg'},
+      {id:'dina-aloe', name:'Aloe Vera Leaf', unit:'Each', vendor:"Dina's Garden", price:4.30, image:'image/aloe vera leaf.jpg'}
     ];
  
     const state = { search:'', sort:'best' };
