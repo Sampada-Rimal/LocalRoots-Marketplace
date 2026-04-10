@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalRoots Product Management</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div>
+      <div class="brand">
+        <h2>LocalRoots</h2>
+        <p>Admin Panel</p>
+      </div>
+
+      <nav class="menu">
+        <a href="admin-dashboard.php">Dashboard</a>
+        <a href="admin-vendors.html">Vendors</a>
+        <a href="admin-customers.html">Customers</a>
+        <a href="admin-products.html" class="active">Products</a>
+        <a href="admin-orders.html">Orders</a>
+        <a href="admin-reports.html">Reports</a>
+        <a href="admin-settings.html">Settings</a>
+      </nav>
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Product Management</h1>
+        <p>Manage all marketplace products</p>
+      </div>
+
+      <div class="topbar-right">
+        <input type="text" id="topProductSearchInput" placeholder="Search products">
+                <a href="admin-login.php" class="logout-btn-top">Logout</a>
+
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>All Products</h2>
+        <button id="openAddProductBtn">Add Product</button>
+      </div>
+
+      <div class="filter-row">
+        <input type="text" id="searchProductName" placeholder="Search by product">
+        <select id="productCategoryFilter">
+          <option value="All">All Categories</option>
+          <option value="Vegetables">Vegetables</option>
+          <option value="Herbs">Herbs</option>
+          <option value="Honey">Honey</option>
+        </select>
+        <select id="productStockFilter">
+          <option value="All">All Stock</option>
+          <option value="Available">Available</option>
+          <option value="Low Stock">Low Stock</option>
+        </select>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Vendor</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="productTableBody"></tbody>
+      </table>
+    </section>
+
+    <section class="card" id="addProductCard" style="display: none;">
+      <div class="card-header">
+        <h2>Add New Product</h2>
+      </div>
+
+      <form id="addProductForm" class="form-grid">
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input type="text" id="productName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="productCategory">Category</label>
+          <select id="productCategory" required>
+            <option value="">Select category</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Herbs">Herbs</option>
+            <option value="Honey">Honey</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="productVendor">Vendor</label>
+          <select id="productVendor" required>
+            <option value="">Select vendor</option>
+            <option value="Diddly Farm">Diddly Farm</option>
+            <option value="Tony's Family Farm">Tony's Family Farm</option>
+            <option value="Farmer's Market">Farmer's Market</option>
+            <option value="Dina's Garden">Dina's Garden</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="productPrice">Price</label>
+          <input type="number" id="productPrice" step="0.01" min="0" required>
+        </div>
+
+        <div class="form-group">
+          <label for="productStock">Stock</label>
+          <input type="number" id="productStock" min="0" required>
+        </div>
+
+        <div class="form-group full-width">
+          <button type="submit" class="form-btn">Save Product</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<script src="admin-products.js"></script>
+</body>
+</html>

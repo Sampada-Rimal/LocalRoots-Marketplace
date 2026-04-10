@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalRoots Settings</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div>
+      <div class="brand">
+        <h2>LocalRoots</h2>
+        <p>Admin Panel</p>
+      </div>
+      <nav class="menu">
+        <a href="admin-dashboard.php">Dashboard</a>
+        <a href="admin-vendors.html">Vendors</a>
+        <a href="admin-customers.html">Customers</a>
+        <a href="admin-products.html">Products</a>
+        <a href="admin-orders.html">Orders</a>
+        <a href="admin-reports.html">Reports</a>
+        <a href="admin-settings.html" class="active">Settings</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Settings</h1>
+        <p>Manage admin profile and platform settings</p>
+      </div>
+              <a href="admin-login.php" class="logout-btn-top">Logout</a>
+
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>Admin Profile</h2>
+      </div>
+
+      <form class="form-grid">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" value="LocalRoots Admin">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" value="admin@localroots.com">
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" value="0400000000">
+        </div>
+
+        <div class="form-group">
+          <label for="role">Role</label>
+          <input type="text" id="role" value="System Administrator">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Change Password</label>
+          <input type="password" id="password" placeholder="Enter new password">
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Confirm new password">
+        </div>
+
+        <div class="form-group full-width">
+          <button type="button" class="form-btn">Save Changes</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>Platform Settings</h2>
+      </div>
+
+      <form class="form-grid">
+        <div class="form-group">
+          <label for="currency">Currency</label>
+          <select id="currency">
+            <option>Australian Dollar</option>
+            <option>US Dollar</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notifications">Email Notifications</label>
+          <select id="notifications">
+            <option>Enabled</option>
+            <option>Disabled</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="vendorApproval">Vendor Approval</label>
+          <select id="vendorApproval">
+            <option>Manual Approval</option>
+            <option>Automatic Approval</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="stockAlert">Low Stock Alerts</label>
+          <select id="stockAlert">
+            <option>Enabled</option>
+            <option>Disabled</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <button type="button" class="form-btn">Update Settings</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalRoots Order Management</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div>
+      <div class="brand">
+        <h2>LocalRoots</h2>
+        <p>Admin Panel</p>
+      </div>
+
+      <nav class="menu">
+        <a href="admin-dashboard.php">Dashboard</a>
+        <a href="admin-vendors.html">Vendors</a>
+        <a href="admin-customers.html">Customers</a>
+        <a href="admin-products.html">Products</a>
+        <a href="admin-orders.html" class="active">Orders</a>
+        <a href="admin-reports.html">Reports</a>
+        <a href="admin-settings.html">Settings</a>
+      </nav>
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Order Management</h1>
+        <p>Manage all customer orders</p>
+      </div>
+
+      <div class="topbar-right">  
+
+        <input type="text" id="topOrderSearchInput" placeholder="Search orders">
+                <a href="admin-login.php" class="logout-btn-top">Logout</a>
+
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>All Orders</h2>
+        <button class="small-btn" id="openAddOrderBtn">Add Order</button>
+      </div>
+
+      <div class="filter-row">
+        <input type="text" id="searchOrderId" placeholder="Search by order ID">
+        <select id="deliveryStatusFilter">
+          <option value="All">All Delivery Status</option>
+          <option value="Completed">Completed</option>
+          <option value="Processing">Processing</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+
+        <select id="paymentStatusFilter">
+          <option value="All">All Payment Status</option>
+          <option value="Paid">Paid</option>
+          <option value="Pending">Pending</option>
+        </select>
+      </div>
+
+      <div class="card" id="addOrderCard" style="display: none; margin-top: 16px;">
+        <h3 style="margin-bottom: 16px;">Add New Order</h3>
+        <form id="addOrderForm" class="form-grid">
+          <div class="form-group">
+            <label for="orderCustomerName">Customer Name</label>
+            <input type="text" id="orderCustomerName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="orderVendorName">Vendor Name</label>
+            <input type="text" id="orderVendorName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="orderDate">Order Date</label>
+            <input type="date" id="orderDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="orderTotal">Total</label>
+            <input type="number" id="orderTotal" step="0.01" required>
+          </div>
+
+          <div class="form-group">
+            <label for="orderDeliveryStatus">Delivery Status</label>
+            <select id="orderDeliveryStatus" required>
+              <option value="Processing">Processing</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="orderPaymentStatus">Payment Status</label>
+            <select id="orderPaymentStatus" required>
+              <option value="Paid">Paid</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <button type="submit" class="form-btn">Save Order</button>
+          </div>
+        </form>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Vendor Name</th>
+            <th>Order Date</th>
+            <th>Total</th>
+            <th>Delivery Status</th>
+            <th>Payment Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody"></tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script src="admin-orders.js"></script>
+</body>
+</html>

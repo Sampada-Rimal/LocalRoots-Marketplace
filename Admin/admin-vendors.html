@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalRoots Vendor Management</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div>
+      <div class="brand">
+        <h2>LocalRoots</h2>
+        <p>Admin Panel</p>
+      </div>
+
+      <nav class="menu">
+        <a href="admin-dashboard.php">Dashboard</a>
+        <a href="admin-vendors.html" class="active">Vendors</a>
+        <a href="admin-customers.html">Customers</a>
+        <a href="admin-products.html">Products</a>
+        <a href="admin-orders.html">Orders</a>
+        <a href="admin-reports.html">Reports</a>
+        <a href="admin-settings.html">Settings</a>
+      </nav>
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Vendor Management</h1>
+        <p>Manage all vendor accounts</p>
+      </div>
+
+      <div class="topbar-right">
+        <input type="text" id="topSearchInput" placeholder="Search vendors">
+                <a href="admin-login.php" class="logout-btn-top">Logout</a>
+ 
+
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>All Vendors</h2>
+        <button id="openAddVendorBtn">Add Vendor</button>
+      </div>
+
+      <div class="filter-row">
+        <input type="text" id="searchName" placeholder="Search by name">
+        <select id="categoryFilter">
+          <option value="All">All Categories</option>
+          <option value="Vegetables">Vegetables</option>
+          <option value="Mixed Produce">Mixed Produce</option>
+          <option value="Fresh Produce">Fresh Produce</option>
+          <option value="Organic Produce">Organic Produce</option>
+        </select>
+
+        <select id="statusFilter">
+          <option value="All">All Status</option>
+          <option value="Approved">Approved</option>
+          <option value="Pending">Pending</option>
+          <option value="Suspended">Suspended</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Vendor ID</th>
+            <th>Vendor Name</th>
+            <th>Farm Name</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="vendorTableBody"></tbody>
+      </table>
+    </section>
+
+    <section class="card" id="pendingCard">
+      <div class="card-header">
+        <h2>Pending Vendors</h2>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Vendor ID</th>
+            <th>Vendor Name</th>
+            <th>Farm Name</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="pendingVendorTableBody"></tbody>
+      </table>
+    </section>
+
+    <section class="card" id="addVendorCard" style="display: none;">
+      <div class="card-header">
+        <h2>Add New Vendor</h2>
+      </div>
+
+      <form id="addVendorForm" class="form-grid">
+        <div class="form-group">
+          <label for="vendorName">Vendor Name</label>
+          <input type="text" id="vendorName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="farmName">Farm Name</label>
+          <input type="text" id="farmName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="vendorCategory">Category</label>
+          <select id="vendorCategory" required>
+            <option value="">Select category</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Mixed Produce">Mixed Produce</option>
+            <option value="Fresh Produce">Fresh Produce</option>
+            <option value="Organic Produce">Organic Produce</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="vendorLocation">Location</label>
+          <input type="text" id="vendorLocation" required>
+        </div>
+
+        <div class="form-group">
+          <label for="vendorEmail">Email</label>
+          <input type="email" id="vendorEmail" required>
+        </div>
+
+        <div class="form-group">
+          <label for="vendorStatus">Status</label>
+          <select id="vendorStatus" required>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Suspended">Suspended</option>
+          </select>
+        </div>
+
+        <div class="form-group full-width">
+          <button type="submit" class="form-btn">Save Vendor</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<script src="admin-vendors.js"></script>
+</body>
+</html>

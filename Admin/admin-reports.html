@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LocalRoots Reports</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="dashboard">
+  <aside class="sidebar">
+    <div>
+      <div class="brand">
+        <h2>LocalRoots</h2>
+        <p>Admin Panel</p>
+      </div>
+      <nav class="menu">
+        <a href="admin-dashboard.php">Dashboard</a>
+        <a href="admin-vendors.html">Vendors</a>
+        <a href="admin-customers.html">Customers</a>
+        <a href="admin-products.html">Products</a>
+        <a href="admin-orders.html">Orders</a>
+        <a href="admin-reports.html" class="active">Reports</a>
+        <a href="admin-settings.html">Settings</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div>
+        <h1>Reports</h1>
+        <p>View sales and platform performance</p>
+      </div>
+              <a href="admin-login.php" class="logout-btn-top">Logout</a>
+
+    </header>
+
+
+    <section class="stats">
+      <div class="stat-card">
+        <h3>Daily Sales</h3>
+        <h2 id="dailySales">$0.00</h2>
+        <p>Today</p>
+      </div>
+      <div class="stat-card">
+        <h3>Weekly Sales</h3>
+        <h2 id="weeklySales">$0.00</h2>
+        <p>This week</p>
+      </div>
+      <div class="stat-card">
+        <h3>Monthly Sales</h3>
+        <h2 id="monthlySales">$0.00</h2>
+        <p>This month</p>
+      </div>
+      <div class="stat-card">
+        <h3>Cancelled Orders</h3>
+        <h2 id="cancelledOrders">0</h2>
+        <p>Current month</p>
+      </div>
+    </section>
+
+    <section class="report-grid">
+      <div class="report-box">
+        <h3>Top Vendors</h3>
+        <div id="topVendorsList"></div>
+      </div>
+
+      <div class="report-box">
+        <h3>Top Selling Products</h3>
+        <div id="topProductsList"></div>
+      </div>
+
+      <div class="report-box">
+        <h3>Low Stock Report</h3>
+        <div id="lowStockList"></div>
+      </div>
+
+      <div class="report-box">
+        <h3>Platform Summary</h3>
+        <p>Total vendors: <span id="totalVendors">0</span></p>
+        <p>Total customers: <span id="totalCustomers">0</span></p>
+        <p>Total products: <span id="totalProducts">0</span></p>
+        <p>Total orders: <span id="totalOrders">0</span></p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="admin-reports.js"></script>
+</body>
+</html>
