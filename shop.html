@@ -45,6 +45,17 @@
         <div class="row mb" style="justify-content:space-between">
           <div class="muted" id="resultsMeta">0 products</div>
           <div class="row">
+ <!-- CATEGORY -->
+  <label for="categorySelect" class="muted">Category</label>
+  <select id="categorySelect" class="input" style="padding:8px 10px; margin-right:10px;">
+    <option value="all">All</option>
+    <option value="dairy">Dairy</option>
+    <option value="herbs">Herbs</option>
+    <option value="fruits">Fruits</option>
+    <option value="vegetables">Vegetables</option>
+ <option value="bakery">Bakery</option>
+  <option value="meat">Meat</option>
+</select>
             <label for="sortSelect" class="muted">Sort by</label>
             <select id="sortSelect" class="input" style="padding:8px 10px">
               <option value="best">Best selling</option>
@@ -195,20 +206,60 @@
 {id:'dina-thaibasil2', name:'Thai Basil Premium', unit:'Bunch', vendor:"Dina's Garden", price:3.00, image:'image/thai basil.jpg'},
 {id:'dina-curry', name:'Curry Leaves', unit:'Bunch', vendor:"Dina's Garden", price:2.80, image:'image/curry leaves.jpg'},
 {id:'dina-pandans', name:'Pandan Leaves', unit:'Pack', vendor:"Dina's Garden", price:3.50, image:'image/pandan.jpg'} ];
-    const state = { search:'', sort:'best' };
+    const state = { search:'', sort:'best', category:'all' };
     const $ = s => document.querySelector(s);
     const grid = $('#grid');
     const resultsMeta = $('#resultsMeta');
     const cartCount = $('#cartCount');
  
     const money = n => `$${n.toFixed(2)}`;
- 
+ function getCategory(product) {
+  const name = product.name.toLowerCase();
+
+  // DAIRY
+  if (name.includes('milk') || name.includes('butter') || name.includes('cheese') || name.includes('yoghurt') || name.includes('cream') || name.includes('ice cream')) {
+    return 'dairy';
+  }
+
+  // HERBS
+  if (name.includes('basil') || name.includes('mint') || name.includes('coriander') || name.includes('chives') || name.includes('dill') || name.includes('oregano') || name.includes('rosemary') || name.includes('thyme') || name.includes('parsley') || name.includes('sage') || name.includes('lavender') || name.includes('tarragon') || name.includes('lemongrass') || name.includes('peppermint') || name.includes('bay') || name.includes('curry')) {
+    return 'herbs';
+  }
+
+  // FRUITS
+  if (
+    name.includes('apple') || name.includes('banana') || name.includes('mango') ||
+    name.includes('grapes') || name.includes('strawberries') || name.includes('blueberries') ||
+    name.includes('orange') || name.includes('peach') || name.includes('watermelon') ||
+    name.includes('kiwi') || name.includes('pear') || name.includes('plum') ||
+    name.includes('nectarine') || name.includes('pineapple') || name.includes('cherries') ||
+    name.includes('mandarin') || name.includes('lime')
+  ) {
+    return 'fruits';
+  }
+
+  // MEAT
+  if (name.includes('bacon') || name.includes('ham') || name.includes('salami') || name.includes('turkey')) {
+    return 'meat';
+  }
+
+  // BAKERY / GRAINS
+  if (name.includes('bread') || name.includes('croissant') || name.includes('bagel') || name.includes('muffin') || name.includes('flour') || name.includes('pasta') || name.includes('rice')) {
+    return 'bakery';
+  }
+
+  // VEGETABLES (default)
+  return 'vegetables';
+}
     function applyFilters(list){
       let out = [...list];
       if(state.search){
         const q = state.search.toLowerCase();
         out = out.filter(p => p.name.toLowerCase().includes(q) || p.vendor.toLowerCase().includes(q));
       }
+if(state.category !== 'all'){
+  out = out.filter(p => getCategory(p) === state.category);
+}
       switch(state.sort){
         case 'price-asc': out.sort((a,b)=>a.price-b.price); break;
         case 'price-desc': out.sort((a,b)=>b.price-a.price); break;
@@ -273,6 +324,10 @@
     }
  
     $('#sortSelect').addEventListener('change', e => { state.sort = e.target.value; render(); });
+$('#categorySelect').addEventListener('change', e => {
+  state.category = e.target.value;
+  render( );
+});
     $('#searchInput').addEventListener('input', e => { state.search = e.target.value.trim(); render(); });
  
     render();
