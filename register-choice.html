@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>LocalRoots – Choose Registration Type</title>
+  <link rel="stylesheet" href="./style.css"/>
+  <style>
+    .register-choice-page{
+      background:
+        radial-gradient(circle at top left, rgba(107,191,89,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(46,125,50,.12), transparent 24%),
+        linear-gradient(180deg, #f8fcf6 0%, #eef6ec 100%);
+      min-height:100vh;
+    }
+
+    .choice-hero{
+      padding:64px 0 24px;
+    }
+
+    .choice-intro{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 28px;
+    }
+
+    .choice-intro .pill{ margin-bottom:14px; }
+
+    .choice-title{
+      font-size:3rem;
+      line-height:1.05;
+      margin:0 0 14px;
+      font-weight:900;
+      letter-spacing:-0.03em;
+    }
+
+    .choice-text{
+      font-size:1.05rem;
+      color:var(--muted);
+      line-height:1.7;
+      margin:0;
+    }
+
+    .choice-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:24px;
+      margin-top:26px;
+      align-items:stretch;
+    }
+
+    .choice-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:24px;
+      padding:28px;
+      background:rgba(255,255,255,.88);
+      border:1px solid var(--line);
+      box-shadow:0 18px 40px rgba(29,54,28,.08);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      min-height:100%;
+    }
+
+    .choice-card::before{
+      content:"";
+      position:absolute;
+      inset:0 auto auto 0;
+      width:100%;
+      height:8px;
+      background:linear-gradient(90deg, var(--brand), var(--brand-2));
+    }
+
+    .choice-card.vendor-card{
+      background:linear-gradient(180deg, rgba(233,246,233,.96), rgba(255,255,255,.96));
+    }
+
+    .choice-card.customer-card{
+      background:linear-gradient(180deg, rgba(248,252,246,.96), rgba(255,255,255,.96));
+    }
+
+    .choice-icon{
+      width:72px;
+      height:72px;
+      border-radius:20px;
+      display:grid;
+      place-items:center;
+      font-size:2rem;
+      background:#ecf4ea;
+      border:1px solid var(--line);
+    }
+
+    .choice-card h2{
+      margin:0;
+      font-size:2rem;
+      line-height:1.1;
+    }
+
+    .choice-card .lead{
+      margin:0;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:1rem;
+    }
+
+    .choice-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:12px;
+    }
+
+    .choice-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:#2b352b;
+      line-height:1.5;
+    }
+
+    .choice-list li::before{
+      content:"✓";
+      color:var(--brand);
+      font-weight:900;
+      margin-top:1px;
+    }
+
+    .choice-actions{
+      margin-top:auto;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .choice-note{
+      margin-top:16px;
+      text-align:center;
+      color:var(--muted);
+    }
+
+    .choice-note a{
+      color:var(--brand);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .choice-note a:hover{
+      text-decoration:underline;
+    }
+
+    @media (max-width: 900px){
+      .choice-grid{ grid-template-columns:1fr; }
+      .choice-title{ font-size:2.35rem; }
+    }
+  </style>
+</head>
+<body class="register-choice-page">
+
+  <header class="landing-nav">
+    <div class="landing-container nav-inner">
+      <a href="./landing.html" class="brand landing-brand" style="text-decoration:none; color:inherit;">
+        <img src="./localroots logo.png" alt="LocalRoots logo">
+        <div>
+          <div class="brand-title">LocalRoots</div>
+          <div class="brand-sub">Sustainable Farmers Marketplace</div>
+        </div>
+      </a>
+
+      <div class="row">
+        <a href="./customer login.php" class="btn btn-ghost">Log In</a>
+        <a href="./register-choice.html" class="btn btn-primary">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="choice-hero">
+      <div class="landing-container">
+        <div class="choice-intro">
+          <span class="pill">🌱 Join LocalRoots</span>
+          <h1 class="choice-title">Choose how you want to register</h1>
+          <p class="choice-text">
+            LocalRoots supports both shoppers and local farm vendors. Select the account type that best matches how you want to use the platform.
+          </p>
+        </div>
+
+        <div class="choice-grid">
+          <article class="choice-card customer-card">
+            <div class="choice-icon" aria-hidden="true">🛒</div>
+            <div>
+              <h2>Register as Customer</h2>
+              <p class="lead">Create a customer account to browse fresh produce, place orders, and enjoy a simple local shopping experience.</p>
+            </div>
+
+            <div>
+              <div class="pill" style="margin-bottom:14px;">Customer benefits</div>
+              <ul class="choice-list">
+                <li>Browse fresh fruits, vegetables, dairy, herbs, and pantry items</li>
+                <li>Place orders quickly and manage purchases in one place</li>
+                <li>Track deliveries from local farms to your doorstep</li>
+                <li>Support small farmers and sustainable local businesses</li>
+              </ul>
+            </div>
+
+            <div class="choice-actions">
+              <a href="./register.php" class="btn btn-primary">Register as Customer</a>
+              <a href="./customer login.php" class="btn btn-ghost">Customer Login</a>
+            </div>
+          </article>
+
+          <article class="choice-card vendor-card">
+            <div class="choice-icon" aria-hidden="true">🚜</div>
+            <div>
+              <h2>Register as Vendor</h2>
+              <p class="lead">Create a vendor account to sell farm products, manage listings, and connect directly with customers in your area.</p>
+            </div>
+
+            <div>
+              <div class="pill" style="margin-bottom:14px;">Vendor benefits</div>
+              <ul class="choice-list">
+                <li>List your farm products and present them professionally online</li>
+                <li>Manage stock, prices, and product availability more easily</li>
+                <li>Receive customer orders through one organised platform</li>
+                <li>Grow your local reach and build trust with nearby communities</li>
+              </ul>
+            </div>
+
+            <div class="choice-actions">
+              <a href="./vendor-register.php" class="btn btn-primary">Register as Vendor</a>
+              <a href="./vendor-login.php" class="btn btn-ghost">Vendor Login</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="choice-note small">
+          Already know your account type? You can go straight to the right registration form. 
+        </p>
+      </div>
+    </section>
+
+    <section class="landing-cta" style="padding-top: 0;">
+      <div class="landing-container cta-box">
+        <div>
+          <h2>Fresh for customers. Powerful for vendors.</h2>
+          <p class="small">LocalRoots makes it easy to shop local and sell local on one platform.</p>
+        </div>
+        <div class="row">
+          <a href="./shop.html" class="btn btn-primary">Browse Products</a>
+          <a href="./landing.html" class="btn btn-ghost">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="landing-footer">
+    <div class="landing-container footer-inner">
+      <div>
+        <strong>LocalRoots</strong>
+        <p class="small">Sustainable Farmers Marketplace</p>
+      </div>
+      <div class="row">
+        <a href="./register-choice.html">Register</a>
+        <a href="./customer login.php">Login</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

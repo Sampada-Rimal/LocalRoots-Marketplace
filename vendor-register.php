@@ -7,8 +7,8 @@ define('DB_NAME', 'project');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-/* After successful registration, go to combined login page in customer mode */
-define('AFTER_REGISTER', 'combined-login.php?role=customer');
+/* After successful registration, go to combined login page in vendor mode */
+define('AFTER_REGISTER', 'combined-login.php?role=vendor');
 
 /* ====== CONNECT TO DATABASE ====== */
 try {
@@ -27,15 +27,17 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $username         = trim($_POST['username'] ?? '');
   $email            = strtolower(trim($_POST['email'] ?? ''));
-  $phone            = trim($_POST['phone'] ?? '');
-  $suburb           = trim($_POST['suburb'] ?? '');
   $password         = $_POST['password'] ?? '';
   $confirmPassword  = $_POST['confirm_password'] ?? '';
-  $role             = 'customer';
+  $businessName     = trim($_POST['business_name'] ?? '');
+  $phone            = trim($_POST['phone'] ?? '');
+  $address          = trim($_POST['address'] ?? '');
+  $description      = trim($_POST['description'] ?? '');
+  $role             = 'vendor';
 
   if (
-    $username === '' || $email === '' || $phone === '' || $suburb === '' ||
-    $password === '' || $confirmPassword === ''
+    $username === '' || $email === '' || $password === '' || $confirmPassword === '' ||
+    $businessName === '' || $phone === '' || $address === ''
   ) {
     $error = 'Please fill in all required fields.';
   } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -56,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       } else {
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
+        /* Storing core login data in users table */
         $stmt = $pdo->prepare(
           'INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)'
         );
@@ -75,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>LocalRoots – Customer Register</title>
+  <title>LocalRoots – Vendor Register</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
     .register-note{
@@ -104,10 +107,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       color: #be123c;
       font-size: .92rem;
     }
-    .hint-text{
+    .success-hint{
       margin-top: 8px;
       font-size: .84rem;
       color: var(--muted);
+    }
+    textarea.input{
+      min-height: 110px;
+      resize: vertical;
     }
     @media (max-width: 860px){
       .form-grid-2{
@@ -119,42 +126,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="login-wrap">
     <div class="login-card">
+      <!-- Branding side -->
       <div class="login-art">
         <img src="./localroots logo.png" alt="LocalRoots logo" style="width:64px;height:64px">
-        <h1>Create Customer Account</h1>
+        <h1>Join as a Vendor</h1>
         <p class="small">
-          Join LocalRoots to shop fresh, seasonal produce directly from trusted local farmers and vendors.
+          Create your vendor account and start selling fresh, local products through LocalRoots.
         </p>
 
         <ul class="small">
-          <li>Browse local fruits, vegetables, and farm goods</li>
-          <li>Track orders and manage your account easily</li>
-          <li>Support your local food community 🌱</li>
+          <li>Reach more nearby customers</li>
+          <li>Manage products and orders online</li>
+          <li>Grow your local farm or business 🌱</li>
         </ul>
 
         <p class="register-note">
-          This account is for customers who want to buy fresh produce and farm products through LocalRoots.
+          This registration is for sellers, growers, and farm businesses who want to list products on LocalRoots.
         </p>
       </div>
 
+      <!-- Form side -->
       <div class="login-form">
         <div class="brand" style="padding:0">
           <div>
-            <div class="brand-title">Customer Register</div>
-            <div class="brand-sub">Create your LocalRoots customer account</div>
+            <div class="brand-title">Vendor Register</div>
+            <div class="brand-sub">Create your LocalRoots vendor account</div>
           </div>
         </div>
 
         <p class="small" style="margin-top:0">
-          Want to register as a vendor?
-          <a href="register-choice.html">Go back and choose vendor</a>
+          Want to register as a customer?
+          <a href="register-choice.html">Go back and choose customer</a>
         </p>
 
         <?php if ($error): ?>
           <div class="error-box"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
 
-        <form method="post" action="register.php" autocomplete="on">
+        <form method="post" action="vendor-register.php" autocomplete="on">
           <div class="form-section-title">Personal Details</div>
 
           <label for="username">Full Name</label>
@@ -195,15 +204,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
           </div>
 
-          <label for="suburb">Suburb / Area</label>
+          <div class="form-section-title">Business Details</div>
+
+          <label for="business_name">Farm / Business Name</label>
           <input
-            id="suburb"
-            name="suburb"
+            id="business_name"
+            name="business_name"
             class="input"
             required
-            placeholder="Your suburb or delivery area"
-            value="<?= htmlspecialchars($_POST['suburb'] ?? '') ?>"
+            placeholder="Your farm or business name"
+            value="<?= htmlspecialchars($_POST['business_name'] ?? '') ?>"
           />
+
+          <label for="address">Business Address</label>
+          <input
+            id="address"
+            name="address"
+            class="input"
+            required
+            placeholder="Business or farm address"
+            value="<?= htmlspecialchars($_POST['address'] ?? '') ?>"
+          />
+
+          <label for="description">What do you sell?</label>
+          <textarea
+            id="description"
+            name="description"
+            class="input"
+            placeholder="Example: Fresh vegetables, seasonal fruits, dairy, herbs, honey..."
+          ><?= htmlspecialchars($_POST['description'] ?? '') ?></textarea>
 
           <div class="form-section-title">Account Security</div>
 
@@ -233,15 +262,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
           </div>
 
-          <p class="hint-text">Use at least 6 characters for your password.</p>
+          <p class="success-hint">Use at least 6 characters for your password.</p>
 
           <button class="btn btn-primary" type="submit" style="width:100%; margin-top:14px;">
-            Create Customer Account
+            Create Vendor Account
           </button>
 
           <p class="small" style="text-align:center; margin-top:14px;">
-            Already have a customer account?
-            <a href="combined-login.php?role=customer">Log in here</a>
+            Already have a vendor account?
+            <a href="combined-login.php?role=vendor">Log in here</a>
           </p>
         </form>
       </div>
