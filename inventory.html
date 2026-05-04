@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LocalRoots – Manage Inventory</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="localroots logo.png" alt="LocalRoots logo"><div>
+          <div class="brand-title">LocalRoots</div>
+          <div class="brand-sub">Sustainable Farmers Marketplace</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="dashboard(v).html"><span class="ico">🏠</span>Dashboard</a>
+        <a class="active" href="inventory.html"><span class="ico">📦</span>Inventory</a>
+        <a href="orders.html"><span class="ico">🧾</span>Orders</a>
+        <a href="gallery.html"><span class="ico">🖼️</span>Gallery</a>
+        <a href="feedback.html"><span class="ico">⭐</span>Feedback</a>
+        <a href="vendor-login.php"><span class="ico">↩︎</span>Log out</a>
+      </nav>
+    </aside>
+
+    <div>
+      <header class="topbar">
+        <div class="search"><span>🔎</span><input placeholder="Search products…"></div>
+        <div class="profile"><span class="badge">Vendor Account</span><span class="avatar" style="background-image:url('assets/vendor-avatar.jpg')"></span><strong>Diddly Farms</strong></div>
+      </header>
+
+      <main class="main">
+        <div class="row" style="justify-content:space-between">
+          <h1 class="h1" style="margin:0">Manage Inventory</h1>
+          <a class="btn btn-primary" href="#" title="implement later">+ Add New Product</a>
+        </div>
+
+        <div class="row mt">
+          <input class="input" style="min-width:320px" placeholder="Search by product name…">
+          <select>
+            <option>Filter by Category</option>
+            <option>Vegetables</option>
+            <option>Fruits</option>
+            <option>Eggs & Dairy</option>
+            <option>Preserves & Honey</option>
+          </select>
+        </div>
+
+        <section class="card mt">
+          <table class="table">
+            <thead>
+              <tr><th>Product</th><th>Price</th><th>Stock</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="row">
+                    <img src="tomatos.png" alt="Tomatoes" style="width:40px;height:40px;border-radius:8px;object-fit:cover; border:1px solid var(--line)">
+                    <div><strong>Organic Heirloom Tomatoes</strong><div class="small">Vegetables</div></div>
+                  </div>
+                </td>
+                <td>$4.99</td>
+                <td>15 lbs</td>
+                <td><span class="status ok">Active</span></td>
+                <td class="row">
+                  <a class="btn btn-ghost" href="#" title="Edit">✏️</a>
+                  <a class="btn btn-ghost" href="#" title="Duplicate">🧬</a>
+                  <a class="btn btn-ghost" href="#" title="Delete">🗑️</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="row">
+                    <img src="kale.png" alt="Kale" style="width:40px;height:40px;border-radius:8px;object-fit:cover; border:1px solid var(--line)">
+                    <div><strong>Fresh Kale</strong><div class="small">Vegetables</div></div>
+                  </div>
+                </td>
+                <td>$4.50</td>
+                <td>10 lbs</td>
+                <td><span class="status ok">Active</span></td>
+                <td class="row">
+                  <a class="btn btn-ghost" href="#">✏️</a>
+                  <a class="btn btn-ghost" href="#">🧬</a>
+                  <a class="btn btn-ghost" href="#">🗑️</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="row">
+                    <img src="honey.png" alt="Honey" style="width:40px;height:40px;border-radius:8px;object-fit:cover; border:1px solid var(--line)">
+                    <div><strong>Raw Honey (8oz)</strong><div class="small">Preserves</div></div>
+                  </div>
+                </td>
+                <td>$8.00</td>
+                <td>8 jars</td>
+                <td><span class="status neutral">Inactive</span></td>
+                <td class="row">
+                  <a class="btn btn-ghost" href="#">✏️</a>
+                  <a class="btn btn-ghost" href="#">🧬</a>
+                  <a class="btn btn-ghost" href="#">🗑️</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="row">
+                    <img src="eggs.jpg" alt="Eggs" style="width:40px;height:40px;border-radius:8px;object-fit:cover; border:1px solid var(--line)">
+                    <div><strong>Pasture-Raised Eggs (Dozen)</strong><div class="small">Eggs & Dairy</div></div>
+                  </div>
+                </td>
+                <td>$5.99</td>
+                <td>25</td>
+                <td><span class="status ok">Active</span></td>
+                <td class="row">
+                  <a class="btn btn-ghost" href="#">✏️</a>
+                  <a class="btn btn-ghost" href="#">🧬</a>
+                  <a class="btn btn-ghost" href="#">🗑️</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="pagination">
+            <a href="#">&laquo;</a><a href="#" style="background:var(--brand); color:#fff">1</a><a href="#">2</a><a href="#">3</a><a href="#">&raquo;</a>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

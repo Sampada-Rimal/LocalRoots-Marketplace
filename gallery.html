@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LocalRoots – Farm Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="localroots logo.png" alt="LocalRoots logo"><div>
+          <div class="brand-title">LocalRoots</div>
+          <div class="brand-sub">Sustainable Farmers Marketplace</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="dashboard(v).html"><span class="ico">🏠</span>Dashboard</a>
+        <a href="inventory.html"><span class="ico">📦</span>Inventory</a>
+        <a href="orders.html"><span class="ico">🧾</span>Orders</a>
+        <a class="active" href="gallery.html"><span class="ico">🖼️</span>Gallery</a>
+        <a href="feedback.html"><span class="ico">⭐</span>Feedback</a>
+        <a href="vendor-login.php"><span class="ico">↩︎</span>Log out</a>
+      </nav>
+    </aside>
+
+    <div>
+      <header class="topbar">
+        <div class="search"><span>🔎</span><input placeholder="Search gallery…"></div>
+        <div class="profile"><span class="badge">Vendor Account</span><span class="avatar" style="background-image:url('assets/vendor-avatar.jpg')"></span><strong>Diddly Farms</strong></div>
+      </header>
+
+      <main class="main">
+        <div class="row" style="justify-content:space-between">
+          <h1 class="h1" style="margin:0">Your Farm Gallery</h1>
+          <label class="btn btn-primary" for="fileUpload">+ Upload New Photo</label>
+          <input id="fileUpload" type="file" accept="image/*" style="display:none"/>
+        </div>
+
+        <p class="small">Showcase your fields, team and seasonal produce. These appear on your public vendor profile.</p>
+
+        <section class="card">
+          <div class="gallery-grid">
+            
+            <div class="pic"><img src="tomatos.png" alt="Field"><button class="trash" title="Delete">🗑️</button></div>
+            <div class="pic"><img src="honey.png" alt="Greens"><button class="trash">🗑️</button></div>
+            <div class="pic"><img src="kale.png" alt="Farmer"><button class="trash">🗑️</button></div>
+            <div class="pic"><img src="eggs.jpg" alt="Barn"><button class="trash">🗑️</button></div>
+            <div class="pic"><img src="cabbage.jpg" alt="Cabbage"><button class="trash">🗑️</button></div>
+            <label class="pic" for="fileUpload">[ + ] Add Photo</label>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

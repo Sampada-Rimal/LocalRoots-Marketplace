@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LocalRoots – Customer Feedback</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="localroots logo.png" alt="LocalRoots logo"><div>
+          <div class="brand-title">LocalRoots</div>
+          <div class="brand-sub">Sustainable Farmers Marketplace</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="dashboard(v).html"><span class="ico">🏠</span>Dashboard</a>
+        <a href="inventory.html"><span class="ico">📦</span>Inventory</a>
+        <a href="orders.html"><span class="ico">🧾</span>Orders</a>
+        <a href="gallery.html"><span class="ico">🖼️</span>Gallery</a>
+        <a class="active" href="feedback.html"><span class="ico">⭐</span>Feedback</a>
+        <a href="vendor-login.php"><span class="ico">↩︎</span>Log out</a>
+      </nav>
+    </aside>
+
+    <div>
+      <header class="topbar">
+        <div class="search"><span>🔎</span><input placeholder="Search reviews…"></div>
+        <div class="profile"><span class="badge">Vendor Account</span><span class="avatar" style="background-image:url('assets/vendor-avatar.jpg')"></span><strong>Diddly Farms</strong></div>
+      </header>
+
+      <main class="main">
+        <h1 class="h1">Customer Feedback</h1>
+
+        <section class="card">
+          <div class="row">
+            <strong>Overall rating: 4.8 / 5</strong>
+            <span class="small">(based on 142 reviews)</span>
+            <div class="right" style="margin-left:auto"></div>
+            <select>
+              <option>Filter by rating</option>
+              <option>5 stars</option><option>4 stars</option><option>3 stars</option>
+            </select>
+            <select>
+              <option>Sort by</option>
+              <option>Newest</option><option>Highest rating</option><option>Lowest rating</option>
+            </select>
+          </div>
+
+          <div class="space"></div>
+
+          <!-- Reviews -->
+          <div class="card" style="margin:0 0 12px 0">
+            <div class="row">
+              <span class="avatar" style="background-image:url('assets/rev1.jpg')"></span>
+              <div>
+                <strong>Emily R.</strong> — ★★★★★
+                <div class="small">“The tomatoes were incredibly fresh! Best I’ve had all season. Will definitely order again.”</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin:0 0 12px 0">
+            <div class="row">
+              <span class="avatar" style="background-image:url('assets/rev2.jpg')"></span>
+              <div>
+                <strong>Hannah P.</strong> — ★★★★☆
+                <div class="small">“Fast delivery and the honey is delicious.”</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin:0">
+            <div class="row">
+              <span class="avatar" style="background-image:url('assets/rev3.jpg')"></span>
+              <div>
+                <strong>Liam C.</strong> — ★★★★☆
+                <div class="small">“Great produce, though one egg was cracked—still a good experience.”</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
