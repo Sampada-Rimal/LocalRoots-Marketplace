@@ -58,20 +58,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       } else {
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        /* Storing core login data in users table */
+        $pdo->beginTransaction();
+
+        /* Insert into users table */
         $stmt = $pdo->prepare(
           'INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)'
         );
         $stmt->execute([$username, $email, $hash, $role]);
 
+        $userId = $pdo->lastInsertId();
+
+        /* Insert vendor-specific details */
+        $vendorStmt = $pdo->prepare(
+          'INSERT INTO vendor_details (user_id, business_name, phone, address, description)
+           VALUES (?, ?, ?, ?, ?)'
+        );
+        $vendorStmt->execute([$userId, $businessName, $phone, $address, $description]);
+
+        $pdo->commit();
+
         header('Location: ' . AFTER_REGISTER);
         exit;
       }
     } catch (Throwable $e) {
+      if ($pdo->inTransaction()) {
+        $pdo->rollBack();
+      }
       $error = 'Registration failed: ' . $e->getMessage();
     }
   }
 }
+?>
 ?>
 <!doctype html>
 <html lang="en">
