@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LocalRoots – Vendor Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="localroots logo.png" alt="LocalRoots logo"><div>
+          <div class="brand-title">LocalRoots</div>
+          <div class="brand-sub">Sustainable Farmers Marketplace</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a class="active" href="dashboard(v).html"><span class="ico">🏠</span>Dashboard</a>
+        <a href="inventory.html"><span class="ico">📦</span>Inventory</a>
+        <a href="orders.html"><span class="ico">🧾</span>Orders</a>
+        <a href="gallery.html"><span class="ico">🖼️</span>Gallery</a>
+        <a href="feedback.html"><span class="ico">⭐</span>Feedback</a>
+        <a href="vendor-login.php"><span class="ico">↩︎</span>Log out</a>
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <div>
+      <header class="topbar">
+        <div class="search">
+          <span>🔎</span>
+          <input type="search" placeholder="Search products, orders, customers…" />
+        </div>
+        <div class="profile">
+          <span class="badge">Vendor Account</span>
+          <!-- Set avatar image via inline style or replace with <img> -->
+          <span class="avatar" style="background-image:url('assets/vendor-avatar.jpg')"></span>
+          <strong>Diddly Farms</strong>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="h1">Welcome back, Diddly Farms!</div>
+
+        <!-- KPIs -->
+        <section class="grid cols-3">
+          <div class="card kpi">
+            <div class="label">Total Revenue</div>
+            <div class="value">$1,250.75</div>
+            <div class="trend">▲ +15% this week</div>
+          </div>
+          <div class="card kpi">
+            <div class="label">New Orders</div>
+            <div class="value">12</div>
+            <div class="trend" style="color:var(--info)">Last 7 days</div>
+          </div>
+          <div class="card kpi">
+            <div class="label">Pending Items</div>
+            <div class="value">8</div>
+            <div class="trend" style="color:var(--warn)">Action required</div>
+          </div>
+        </section>
+
+        <div class="space"></div>
+
+        <!-- Sales Overview (placeholder area for a future chart) -->
+        <section class="card">
+          <strong>Sales Overview (Last 30 Days)</strong>
+          <div style="height:260px; border:1px dashed var(--line); border-radius:12px; margin-top:12px; background:linear-gradient(180deg,#f1f7ef, #fff)">
+            <!-- later: inject a canvas chart if you add JS -->
+          </div>
+        </section>
+
+        <div class="space"></div>
+
+        <!-- Recent Orders -->
+        <section class="card">
+          <div class="row" style="justify-content:space-between">
+            <strong>Recent Orders</strong>
+            <a href="orders.html" class="small">View all orders →</a>
+          </div>
+          <table class="table mt">
+            <thead>
+              <tr><th>#</th><th>Customer</th><th>Total</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#1203</td><td>Jane D.</td><td>$22.00</td>
+                <td><span class="status warn">Processing</span></td>
+              </tr>
+              <tr>
+                <td>#1201</td><td>John S.</td><td>$31.40</td>
+                <td><span class="status ok">Delivered</span></td>
+              </tr>
+              <tr>
+                <td>#1198</td><td>Mark T.</td><td>$18.75</td>
+                <td><span class="status info">Shipped</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
